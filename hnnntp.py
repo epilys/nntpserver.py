@@ -162,6 +162,17 @@ class HNNNTPServer(NNTPServer, collections.abc.Mapping):
     def articles(self) -> typing.Dict[typing.Union[int, str], ArticleInfo]:
         return self
 
+    def newnews(
+        self, wildmat: str, date: datetime.datetime
+    ) -> typing.Optional[typing.Iterator[ArticleInfo]]:
+        conn = self.get_conn()
+        cur = conn.cursor()
+        for row in cur.execute(
+            "SELECT id FROM articles WHERE time > ? ORDER BY id", (date.timestamp())
+        ):
+            yield self[row["id"]]
+        return None
+
     def warm(self, i) -> Article:
         if self.article_index[i]:
             return typing.cast(Article, self.article_index[i])
@@ -227,8 +238,8 @@ class HNNNTPServer(NNTPServer, collections.abc.Mapping):
         except KeyError:
             raise NNTPArticleNotFound(key)
 
-    def __iter__(self) -> typing.Iterator[typing.Any]:
-        return (self[k] for k in self.article_index)
+    def __iter__(self) -> typing.Iterator[typing.Union[str, int]]:
+        return (k for k in self.article_index)
 
     def __len__(self) -> int:
         return self.count

@@ -7,6 +7,17 @@ Included example servers are:
 - `example_server.py` returning hard-coded articles
 - `hnnntp.py` querying news.ycombinator.com (hackernews) API and caching results in an sqlite3 database. A public instance *might* be online at nessuent.xyz:564 (TLS only)
 
+<table align="center">
+  <tbody>
+    <tr>
+      <td><p align="center" ><kbd ><img src="./commodore-amiga.png?raw=true" alt="screenshot of nntp server accessed via commodore amiga" title="screenshot of nntp server accessed via commodore amiga" height="300"  style="width: 100%; height: auto; " /></kbd></p></td>
+    </tr>
+    <tr>
+      <th><sup>https://sic.pm NNTP server that uses `nntpserver.py` <br />accessed on a Commodore Amiga with <a href="http://newscoaster.sourceforge.net/">NewsCoaster</a> client</sup></th>
+    </tr>
+  </tbody>
+</table>
+
 Running `example_server.py`:
 
 ```shell

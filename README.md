@@ -1,5 +1,11 @@
 # `nntpserver.py`
 
+https://pypi.org/project/nntpserver/
+
+```shell
+python3 -m pip install nntpserver
+```
+
 No-dependency, single file NNTP server library for developing modern, rfc3977-compliant (bridge) NNTP servers for python >=3.7. Developed as part of [`tade`](https://github.com/epilys/tade), a web discussion forum with mailing list/NNTP interfaces which powers the https://sic.pm link aggregator.
 
 Included example servers are:
